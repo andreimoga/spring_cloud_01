@@ -1,0 +1,50 @@
+server.port: 9333
+
+
+spring:
+  application.name: "gatewayservice"
+  cloud:
+    gateway:
+      routes:
+        - id: ms2
+          uri: lb://MICROSERVICE02
+          predicates:
+            #short version
+            #- Path=/ms2/**
+            - name: Path
+              args:
+                name: microservice2-pathMatcher
+                pathMatcher: /ms2/**
+        - id: ms1
+          uri: lb://MICROSERVICE01
+          predicates:
+            - name: Path
+              args:
+                name: microservice1-pathMatcher
+                pathMatcher: /ms1/**
+      default-filters:
+        - AddRequestHeader=proxied, true
+
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: "http://localhost:8763/eureka/"
+    eureka-server-connect-timeout-seconds: 5
+  instance:
+    lease-renewal-interval-in-seconds: 5
+
+management:
+  endpoints:
+    web.exposure.include: "*"
+  endpoint:
+    health:
+      show-details: always
+  tracing:
+    sampling:
+      probability: 1.0
+
+logging:
+  level:
+    root: info

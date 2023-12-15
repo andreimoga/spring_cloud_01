@@ -1,0 +1,26 @@
+# https://cloud.spring.io/spring-cloud-config/multi/multi__spring_cloud_config_client.html
+spring:
+  application.name: microservice01
+  profiles.active: dev
+  cloud:
+    config:
+      # direct access to config server
+      # uri: "http://localhost:12345"
+
+      # using Eureka server to discover the config service - Eureka config is a must if the port is != 8761 (default)
+      discovery:
+        enabled: true
+        serviceId: CONFIGSERVER
+      fail-fast: true
+
+# required properties for spring.cloud.config.discovery.serviceId (config server is registered also with Eureka)
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: "http://localhost:8763/eureka"
+    eureka-server-connect-timeout-seconds: 5
+  instance:
+    # Heartbeat interval
+    lease-renewal-interval-in-seconds: 5

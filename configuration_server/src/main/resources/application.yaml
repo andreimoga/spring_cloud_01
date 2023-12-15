@@ -1,0 +1,25 @@
+server.port: 12345
+spring:
+  application.name: configserver
+  cloud:
+    config:
+      server:
+        git.uri: file:///d:\\projects\\java\\spring_cloud_01\\local_repo_config_server
+
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: "http://localhost:8763/eureka"
+    eureka-server-connect-timeout-seconds: 5
+
+management:
+  endpoints:
+    web.exposure.include: "*"
+  endpoint:
+    health:
+      show-details: always
+  tracing:
+    sampling:
+      probability: 1.0

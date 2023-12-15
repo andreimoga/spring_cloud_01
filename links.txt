@@ -1,0 +1,95 @@
+##########################
+
+https://docs.spring.io/spring-cloud-circuitbreaker/docs/current/reference/html/#auto-configuration
+https://cloud.spring.io/spring-cloud-circuitbreaker/reference/html/index.html	
+https://manerajona.medium.com/spring-cloud-circuit-breaker-resilience4j-fbea6bc06507
+
+https://betterprogramming.pub/implementing-reactive-circuit-breaker-using-resilience4j-4fe81d28e100
+
+https://copyprogramming.com/howto/spring-retry-with-circuit-breaker
+
+https://medium.com/@AlexanderObregon/exploring-client-side-load-balancing-with-spring-cloud-ribbon-59bf46af9b73#:~:text=Also%2C%20it's%20important%20to%20note,understanding%20client%2Dside%20load%20balancing.
+
+https://docs.spring.io/spring-cloud-circuitbreaker/docs/current/reference/html/spring-cloud-circuitbreaker-spring-retry.html
+
+https://docs.spring.io/spring-boot/docs/current/maven-plugin/reference/htmlsingle/
+
+##########################
+
+in  spring_cloud_01\local_repo_config_server
+
+git config --global core.eol lf
+git config --global core.autocrlf input
+
+git init
+git checkout -b main
+git add *
+git commit -m "add microservice01 configs"
+
+https://github.com/openzipkin/zipkin/
+
+http://localhost:8763/
+http://localhost:8763/eureka/apps
+http://localhost:8763/eureka/apps/delta
+
+http://localhost:8763/actuator
+
+http://localhost:12345/microservice01/default
+http://localhost:12345/microservice01/dev
+
+
+
+http://localhost:12345/microservice01/default
+http://localhost:12345/microservice01/dev
+
+http://localhost:8020/ms1/services_list
+http://localhost:8020/ms1/stream_flux_local
+http://localhost:8020/ms1/data_flux_remote
+http://localhost:8020/ms1/stream_flux_remote
+
+http://localhost:8020/actuator
+http://localhost:8020/actuator/circuitbreakers
+http://localhost:8020/actuator/circuitbreakerevents
+
+
+circuit breaker when service is not available
+	data:µ-service-1 received and error while calling µ-service-2 [503 Service Unavailable] 
+	during [GET] to [http://ANDREW-BIG-PC:9333/ms2/stream_flux] [MicroService02Client#getStreamFlux()]: 
+	[{"timestamp":"2023-12-11T19:48:32.881+00:00","path":"/ms2/stream_flux","status":503,"error":"Service Unavailable","requestId":"4eb52d8a-24"}]
+	
+
+mvn spring-boot:run
+mvn spring-boot:run -Dspring-boot.run.profiles=instance01
+mvn spring-boot:run -Dspring-boot.run.profiles=instance02
+
+not required <profiles>instance01,instance02</profiles>
+
+
+http://localhost:9020/ms2/data_flux
+http://localhost:9020/ms2/random_data_flux
+http://localhost:9020/ms2/data_list
+http://localhost:9020/ms2/random_data_list
+http://localhost:9020/ms2/stream_flux
+
+http://localhost:9021/ms2/data_flux
+http://localhost:9021/ms2/random_data_flux
+http://localhost:9021/ms2/data_list
+http://localhost:9021/ms2/random_data_list
+http://localhost:9021/ms2/stream_flux
+
+
+circuit breaker for http://localhost:8020/ms1/stream_flux_remote
+data:µ-service-1 received and error while calling µ-service-2 Did not observe any item or terminal signal within 1000ms in 'circuitBreaker' (and no fallback has been configured)
+
+
+http://localhost:9333/ms1/services_list
+http://localhost:9333/ms1/stream_flux_local
+http://localhost:9333/ms1/data_flux_remote
+http://localhost:9333/ms1/stream_flux_remote
+
+
+http://localhost:9333/ms2/data_flux
+http://localhost:9333/ms2/random_data_flux
+http://localhost:9333/ms2/data_list
+http://localhost:9333/ms2/random_data_list
+http://localhost:9333/ms2/stream_flux

@@ -1,0 +1,23 @@
+server.port: 8763
+
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+  instance:
+#    namespace: "demo_namespace_eureka"
+    hostname: "localhost"
+    registry:
+      expected-number-of-clients-sending-renews: 10
+  server:
+    expected-client-renewal-interval-seconds: 5
+
+management:
+  endpoints:
+    web.exposure.include: "*"
+  endpoint:
+    health:
+      show-details: always
+  tracing:
+    sampling:
+      probability: 1.0
